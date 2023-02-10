@@ -6,6 +6,9 @@ const hbs = require('express-handlebars')
 const app = exprss()
 const port = 3000
 
+
+
+app.use(exprss.static(path.join(__dirname, 'public')));
 app.engine('hbs', handlebars.engine({
     extname: '.hbs'
 }));
