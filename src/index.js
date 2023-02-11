@@ -12,6 +12,12 @@ app.use(exprss.static(path.join(__dirname, 'public')));
 app.engine('hbs', handlebars.engine({
     extname: '.hbs'
 }));
+app.use(exprss.urlencoded({
+    extend: true
+}))
+app.use(exprss.json())
+
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 app.use(morgan('combined'))
@@ -26,9 +32,13 @@ app.get('/news', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-    console.log(req.query);
     res.render('search')
 })
 
+
+app.post('/search', (req, res) => {
+    console.log(req.body);
+    res.render('')
+})
 
 app.listen(port, () => console.log("Conllect thành công"));
